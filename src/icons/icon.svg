@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Background with ChatGPT green -->
+  <rect width="128" height="128" rx="24" fill="#10a37f"/>
+
+  <!-- Folder shape -->
+  <path d="M24 42h24l6 6h50c3.3 0 6 2.7 6 6v38c0 3.3-2.7 6-6 6H24c-3.3 0-6-2.7-6-6V48c0-3.3 2.7-6 6-6z" fill="white" opacity="0.95"/>
+
+  <!-- Three chat bubbles stacked (conversations being organized) -->
+  <rect x="32" y="58" width="28" height="10" rx="2" fill="#10a37f" opacity="0.5"/>
+  <rect x="32" y="72" width="36" height="10" rx="2" fill="#10a37f" opacity="0.7"/>
+  <rect x="32" y="86" width="24" height="10" rx="2" fill="#10a37f" opacity="0.9"/>
+
+  <!-- Checkmark indicating organization complete -->
+  <path d="M80 68 L88 78 L102 58" stroke="#10a37f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

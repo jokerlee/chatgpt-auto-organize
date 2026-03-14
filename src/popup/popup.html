@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatGPT Auto Organize</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🗂️ Auto Organize</h1>
+      <p class="subtitle">Smart conversation sorting with ChatGPT</p>
+    </header>
+
+    <div id="status-bar" class="status-bar hidden">
+      <span id="status-text"></span>
+    </div>
+
+    <div id="not-on-chatgpt" class="message-box warning hidden">
+      <p>Please open ChatGPT first</p>
+      <a href="https://chatgpt.com" target="_blank" class="btn btn-primary">Open ChatGPT</a>
+    </div>
+
+    <div id="main-content" class="hidden">
+      <section id="stats-section" class="stats">
+        <div class="stat-item">
+          <span class="stat-value" id="uncategorized-count">-</span>
+          <span class="stat-label">Uncategorized</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="projects-counts">-</span>
+          <span class="stat-label">Projects</span>
+        </div>
+        <button id="btn-refresh" class="btn-icon-only" title="Refresh">🔄</button>
+      </section>
+
+      <section id="info-section" class="info-box">
+        <p>💡 Click scan to let ChatGPT analyze your conversation titles and suggest categories. The temporary chat will be auto-deleted after classification.</p>
+      </section>
+
+      <section id="actions-section" class="actions">
+        <button id="btn-scan" class="btn btn-primary">
+          <span class="btn-icon">🔍</span>
+          Scan & Classify
+        </button>
+        <button id="btn-settings" class="btn btn-secondary">
+          <span class="btn-icon">⚙️</span>
+          Settings
+        </button>
+      </section>
+
+      <section id="preview-section" class="preview-section hidden">
+        <h2>Classification Preview</h2>
+        <p class="preview-hint">Uncheck conversations you don't want to move</p>
+        <div id="preview-list" class="preview-list"></div>
+        <div class="preview-actions">
+          <button id="btn-apply" class="btn btn-success" disabled>
+            Apply Changes
+          </button>
+          <button id="btn-cancel" class="btn btn-secondary">
+            Cancel
+          </button>
+        </div>
+      </section>
+
+      <section id="progress-section" class="progress-section hidden">
+        <div class="progress-bar">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+        <p id="progress-text" class="progress-text">Processing...</p>
+        <button id="btn-cancel-task" class="btn btn-secondary btn-small">Cancel</button>
+      </section>
+    </div>
+
+    <div id="settings-panel" class="settings-panel hidden">
+      <h2>Settings</h2>
+
+      <div class="setting-group">
+        <label class="setting-label">Batch Size</label>
+        <p class="setting-desc">Too many conversations at once may cause ChatGPT response truncation</p>
+        <select id="batch-size">
+          <option value="20">20 conversations</option>
+          <option value="50" selected>50 conversations</option>
+          <option value="100">100 conversations</option>
+        </select>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">Custom Categories</label>
+        <p class="setting-desc">Define preferred categories - AI will prioritize using these</p>
+        <div id="custom-categories" class="custom-categories"></div>
+        <div class="add-category-row">
+          <input type="text" id="new-category-input" placeholder="Enter category name" class="category-input">
+          <button id="btn-add-category" class="btn btn-small">Add</button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">
+          <input type="checkbox" id="use-custom-only">
+          Use custom categories only
+        </label>
+        <p class="setting-desc">When enabled, AI will only use your defined categories</p>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">
+          <input type="checkbox" id="use-existing-only">
+          Use existing projects only
+        </label>
+        <p class="setting-desc">When enabled, AI will only use existing projects, no new ones created</p>
+      </div>
+
+      <div class="setting-actions">
+        <button id="btn-save-settings" class="btn btn-primary">Save</button>
+        <button id="btn-back" class="btn btn-secondary">Back</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>
